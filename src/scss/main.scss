@@ -1,0 +1,14 @@
+@import 'colors';
+@import 'variables';
+@import 'mixins';
+
+@import 'flex';
+@import 'vuetify-overwrite';
+@import 'fret-widths';
+@import 'fretboard';
+
+// Accessibility CSS
+body:not(.user-is-tabbing) button:focus {
+  outline: none;
+  box-shadow: none;
+}

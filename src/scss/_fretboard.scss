@@ -1,0 +1,21 @@
+/*
+
+TABLE OF CONTENTS
+=================
+1. Variables
+
+*/
+
+/*
+TODO: 
+pull in note interface css and add this padding to the outside edges of each fret
+.note-interface__fret I believe  
+padding: $note-padding--vertical 0;
+*/
+
+// ===== Variables ======
+$note-size: 40px;
+$note-font-size: 1.6rem;
+$note-padding--vertical: 5px;
+$note-padding--horizontal: 25px;
+$num-frets: 19;

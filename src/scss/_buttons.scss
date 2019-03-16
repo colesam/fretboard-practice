@@ -1,0 +1,39 @@
+.btn {
+  border-radius: $border-radius;
+
+  &:hover {
+    position: relative;
+    top: -1px;
+    box-shadow: $box-shadow-lg;
+  }
+}
+
+.btn-secondary, .btn-secondary:hover {
+  background: $gray-100;
+  color: $gray-700;
+  border: 1px solid $gray-400;
+}
+
+.btn-primary, .btn-primary:hover {
+  background: lighten($blue, 60%);
+  border: 1px solid $blue;
+  color: darken($blue, 10%);
+}
+
+.btn-success, .btn-success:hover {
+  background: lighten($green, 45%);
+  border: 1px solid $green;
+  color: darken($green, 13%);
+}
+
+.btn-danger, .btn-danger:hover {
+  background: lighten($red, 38%);
+  border: 1px solid $red;
+  color: darken($red, 10%);
+}
+
+.btn-info, .btn-info:hover {
+  background: lighten($teal, 48%);
+  border: 1px solid $teal;
+  color: darken($teal, 10%);
+}

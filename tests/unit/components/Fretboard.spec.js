@@ -1,0 +1,91 @@
+import { shallowMount } from '@vue/test-utils'
+import Fretboard from '@/components/Fretboard'
+import NoteInterface from '@/components/NoteInterface'
+import state from '@/store/testData/testState.js'
+import getters from '@/store/getters'
+
+const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, {
+  getNoteAtPosition: getters.getNoteAtPosition(state)
+})
+
+const build = options => {
+  return shallowMount(Fretboard, options)
+}
+
+// Default props
+let options
+beforeEach(() => {
+  const board = state.boards['1']
+  options = {
+    propsData: {
+      noteMatrix: getBoardNoteMatrix('1'),
+      notePreferences: board.notePreferences,
+      root: board.root,
+      numFrets: board.numFrets
+    }
+  }
+})
+
+// creates a fret for every fret in noteMatrix
+// renders a nut if the starting fret is 0
+// does not render nut if starting fret is not 0
+// renders the note interface child component
+// emits the note click event
+describe('Fretboard', () => {
+  it('renders', () => {
+    const wrapper = build(options)
+    expect(wrapper.find('.fretboard-wrapper').exists()).toBe(true)
+  })
+
+  it('renders a visual fret for every fret in the noteMatrix prop', () => {
+    const board = state.boards['3']
+    const noteMatrix = getBoardNoteMatrix(board.id) // this should fail
+    options.propsData = {
+      noteMatrix: getBoardNoteMatrix(board.id),
+      notePreferences: board.notePreferences,
+      root: board.root,
+      numFrets: board.numFrets,
+      startingFret: board.startingFret
+    }
+    const wrapper = build(options)
+    expect(wrapper.findAll('.fretboard__fret').length).toBe(noteMatrix.length)
+  })
+
+  it('renders a nut only if the starting fret is 0', () => {
+    let wrapper = build(options)
+    expect(wrapper.find('.fretboard__nut').exists()).toBe(true)
+    wrapper.setProps({
+      startingFret: 1
+    })
+    expect(wrapper.find('.fretboard__nut').exists()).toBe(false)
+  })
+
+  it('includes the nut as a fret if the starting fret is 0', () => {
+    options.startingFret = 0
+    const wrapper = build(options)
+    const { noteMatrix } = options.propsData
+    expect(wrapper.findAll('.fretboard__fret').length + 1).toBe(noteMatrix.length)
+  })
+
+  it('renders a noteInterface child component', () => {
+    const wrapper = build(options)
+    expect(wrapper.find(NoteInterface).exists()).toBe(true)
+  })
+
+  it('emits a "note-click" event on its noteInterface\'s "note-click" event', () => {
+    options.propsData.isEditable = true
+    const wrapper = build(options)
+    const position = { fret: 0, note: 0 }
+    wrapper.vm.handleNoteClick(position)
+    expect(wrapper.emitted('note-click').length).toBe(1)
+    expect(wrapper.emitted('note-click')[0][0]).toMatchObject(position)
+  })
+
+  it('does not emit a "note-click" event if the isEditable prop is false', () => {
+    options.propsData.isEditable = false
+    const wrapper = build(options)
+    const position = { fret: 0, note: 0 }
+    wrapper.vm.handleNoteClick(position)
+    expect(wrapper.emitted('note-click')).toBeUndefined()
+  })
+})

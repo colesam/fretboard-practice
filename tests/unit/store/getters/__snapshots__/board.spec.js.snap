@@ -1,0 +1,298 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getBoardList returns an array of all boards in the vuex store 1`] = `
+Array [
+  Object {
+    "id": 1,
+    "name": "G major arpeggio - pos. 1",
+    "notePreferences": Object {
+      "A": "A",
+      "A#": "B♭",
+      "B": "B",
+      "C": "C",
+      "C#": "C#",
+      "D": "D",
+      "D#": "E♭",
+      "E": "E",
+      "F": "F",
+      "F#": "F#",
+      "G": "G",
+      "G#": "A♭",
+    },
+    "numFrets": 19,
+    "numStrings": 4,
+    "openTuning": Array [
+      "E",
+      "A",
+      "D",
+      "G",
+    ],
+    "positions": Array [
+      Object {
+        "fret": 3,
+        "string": 0,
+      },
+      Object {
+        "fret": 2,
+        "string": 1,
+      },
+      Object {
+        "fret": 5,
+        "string": 1,
+      },
+      Object {
+        "fret": 0,
+        "string": 2,
+      },
+      Object {
+        "fret": 0,
+        "string": 3,
+      },
+      Object {
+        "fret": 4,
+        "string": 3,
+      },
+      Object {
+        "fret": 5,
+        "string": 2,
+      },
+    ],
+    "root": "G",
+  },
+  Object {
+    "id": 2,
+    "name": "C major arpeggio - pos. 1",
+    "notePreferences": Object {
+      "A": "A",
+      "A#": "B♭",
+      "B": "B",
+      "C": "C",
+      "C#": "C#",
+      "D": "D",
+      "D#": "E♭",
+      "E": "E",
+      "F": "F",
+      "F#": "F#",
+      "G": "G",
+      "G#": "A♭",
+    },
+    "numFrets": 6,
+    "numStrings": 4,
+    "openTuning": Array [
+      "E",
+      "A",
+      "D",
+      "G",
+    ],
+    "positions": Array [
+      Object {
+        "fret": 5,
+        "string": 3,
+      },
+      Object {
+        "fret": 2,
+        "string": 2,
+      },
+      Object {
+        "fret": 5,
+        "string": 2,
+      },
+      Object {
+        "fret": 3,
+        "string": 1,
+      },
+      Object {
+        "fret": 0,
+        "string": 0,
+      },
+      Object {
+        "fret": 3,
+        "string": 0,
+      },
+    ],
+    "root": "C",
+  },
+  Object {
+    "id": 3,
+    "name": "A major scale - pos. 2",
+    "notePreferences": Object {
+      "A": "A",
+      "A#": "B♭",
+      "B": "B",
+      "C": "C",
+      "C#": "C#",
+      "D": "D",
+      "D#": "E♭",
+      "E": "E",
+      "F": "F",
+      "F#": "F#",
+      "G": "G",
+      "G#": "A♭",
+    },
+    "numFrets": 7,
+    "numStrings": 4,
+    "openTuning": Array [
+      "E",
+      "A",
+      "D",
+      "G",
+    ],
+    "positions": Array [
+      Object {
+        "fret": 0,
+        "string": 0,
+      },
+      Object {
+        "fret": 2,
+        "string": 0,
+      },
+      Object {
+        "fret": 3,
+        "string": 0,
+      },
+      Object {
+        "fret": 5,
+        "string": 0,
+      },
+      Object {
+        "fret": 0,
+        "string": 1,
+      },
+      Object {
+        "fret": 2,
+        "string": 1,
+      },
+      Object {
+        "fret": 4,
+        "string": 1,
+      },
+      Object {
+        "fret": 5,
+        "string": 1,
+      },
+      Object {
+        "fret": 0,
+        "string": 2,
+      },
+      Object {
+        "fret": 2,
+        "string": 2,
+      },
+      Object {
+        "fret": 4,
+        "string": 2,
+      },
+      Object {
+        "fret": 5,
+        "string": 2,
+      },
+      Object {
+        "fret": 0,
+        "string": 3,
+      },
+      Object {
+        "fret": 2,
+        "string": 3,
+      },
+      Object {
+        "fret": 4,
+        "string": 3,
+      },
+      Object {
+        "fret": 6,
+        "string": 3,
+      },
+    ],
+    "root": "G",
+    "startingFret": 7,
+  },
+]
+`;
+
+exports[`getBoardNoteMatrix returns a matrix of every note at every position on the fretboard 1`] = `
+Array [
+  Array [
+    "E",
+    "A",
+    "D",
+    "G",
+  ],
+  Array [
+    "F",
+    "A#",
+    "D#",
+    "G#",
+  ],
+  Array [
+    "F#",
+    "B",
+    "E",
+    "A",
+  ],
+  Array [
+    "G",
+    "C",
+    "F",
+    "A#",
+  ],
+  Array [
+    "G#",
+    "C#",
+    "F#",
+    "B",
+  ],
+  Array [
+    "A",
+    "D",
+    "G",
+    "C",
+  ],
+]
+`;
+
+exports[`getBoardNoteMatrix returns a matrix of every note at every position on the fretboard 2`] = `
+Array [
+  Array [
+    "B",
+    "E",
+    "A",
+    "D",
+  ],
+  Array [
+    "C",
+    "F",
+    "A#",
+    "D#",
+  ],
+  Array [
+    "C#",
+    "F#",
+    "B",
+    "E",
+  ],
+  Array [
+    "D",
+    "G",
+    "C",
+    "F",
+  ],
+  Array [
+    "D#",
+    "G#",
+    "C#",
+    "F#",
+  ],
+  Array [
+    "E",
+    "A",
+    "D",
+    "G",
+  ],
+  Array [
+    "F",
+    "A#",
+    "D#",
+    "G#",
+  ],
+]
+`;

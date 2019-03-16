@@ -1,0 +1,46 @@
+@import 'colors';
+
+// Input with outline
+.theme--light.v-text-field--outline {
+  & > .v-input__control > .v-input__slot {
+    background: white !important;
+    min-height: 58px; // to match v-select
+  }
+
+  & > .v-input__control > .v-input__slot {
+    border: 1px solid $grey;
+    transition: border 0.2s;
+
+    &:hover {
+      border: 1px solid $grey-d2 !important;
+    }
+  }
+
+  &.v-input--is-focused > .v-input__control > .v-input__slot {
+    border-color: $focus-blue;
+    box-shadow: 0 0 10px rgba($focus-blue, 0.3);
+
+    & .primary-text {
+      color: $focus-blue !important;
+      caret-color: $focus-blue !important;
+    }
+
+    &:hover {
+      border: 1px solid $focus-blue !important;
+    }
+  }
+}
+
+// Make v-expansion-panel flat
+.v-expansion-panel {
+  box-shadow: none;
+}
+
+.v-list__tile__title {
+  transition: color 0s !important;
+}
+
+// Reduce box shadow
+.v-toolbar {
+  box-shadow: $box-shadow;
+}
