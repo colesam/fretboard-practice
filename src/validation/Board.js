@@ -19,6 +19,7 @@ export default {
     let position = ow.object
     let openTuning = ow.array.ofType(ow.string.oneOf(NOTES))
     let note = ow.string.oneOf(NOTES)
+    let startingFret = ow.number.greaterThanOrEqual(0)
 
     // Add additional validation rules that depend on board data
     if (board != null) {
@@ -27,6 +28,7 @@ export default {
         string: ow.number.inRange(0, board.numStrings - 1)
       })
       openTuning = openTuning.length(board.numStrings)
+      startingFret = startingFret.lessThan(board.numFrets)
     }
 
     return {
@@ -38,7 +40,7 @@ export default {
       numFrets: ow.number.greaterThanOrEqual(0),
       numStrings: ow.number.greaterThanOrEqual(0),
       openTuning,
-      note,
+      startingFret,
       position
     }
   },
@@ -57,7 +59,8 @@ export default {
       openTuning,
       notePreferences,
       numFrets,
-      numStrings
+      numStrings,
+      startingFret
     } = this.predicates(board)
 
     ow(
@@ -70,7 +73,8 @@ export default {
         openTuning,
         notePreferences,
         numFrets,
-        numStrings
+        numStrings,
+        startingFret
       })
     )
   },
@@ -107,18 +111,19 @@ export default {
 // Related Type Definitions
 /**
  * @typedef {Object} BoardState
- * @property {string} id - Unique identifier for the fretboard
- * @property {string} name - Name of the fretboard
+ * @property {String} id - Unique identifier for the fretboard
+ * @property {String} name - Name of the fretboard
  * @property {Position[]} positions - Enabled positions of the fretboard
- * @property {string} root - Root note of the fretboard
+ * @property {String} root - Root note of the fretboard
  * @property {Array} openTuning - Tuning of each note in open position
- * @property {string} notePreferences - Preferred names of each note in the chromatic scale
- * @property {string} numFrets - Number of frets on this fretboard
- * @property {string} numStrings - Number of strings on this fretboard
+ * @property {String} notePreferences - Preferred names of each note in the chromatic scale
+ * @property {Number} numFrets - Number of frets on this fretboard
+ * @property {Number} numStrings - Number of strings on this fretboard
+ * @property {Number} startingFret - Fret number that the board starts at
  */
 
 /**
  * @typedef {Object} Position
- * @property {number} fret - Fret position offset from 0
- * @property {number} string - String position offset from 0
+ * @property {Number} fret - Fret position offset from 0
+ * @property {Number} string - String position offset from 0
  */

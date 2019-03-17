@@ -58,6 +58,7 @@ Array [
       },
     ],
     "root": "G",
+    "startingFret": 0,
   },
   Object {
     "id": 2,
@@ -111,6 +112,7 @@ Array [
       },
     ],
     "root": "C",
+    "startingFret": 0,
   },
   Object {
     "id": 3,

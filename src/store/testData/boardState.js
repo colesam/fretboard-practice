@@ -28,7 +28,8 @@ export default {
       'G#': 'A♭'
     },
     numFrets: 19,
-    numStrings: 4
+    numStrings: 4,
+    startingFret: 0
   },
 
   '2': {
@@ -59,7 +60,8 @@ export default {
       'G#': 'A♭'
     },
     numFrets: 6,
-    numStrings: 4
+    numStrings: 4,
+    startingFret: 0
   },
 
   '3': {

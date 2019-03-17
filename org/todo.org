@@ -6,9 +6,9 @@
 ** TODO Update BoardState documentation to include the new startingFret attribute
 ** DONE Document props on Note.vue
 ** DONE Setup a vuex, validation, and components namespace with subnamespaces
-* Testing [1/2]
-** IN-PROGRESS Refactor, test, and document Fretboard.vue
-- [ ] Create test for if a Note is in active positions and render the Note component
+* Testing [2/2]
+** DONE Refactor, test, and document Fretboard.vue
+- [X] Create test for if a Note is in active positions and render the Note component
 ** DONE Refactor, test, and document NoteInterface.vue
-* User interface [0/1]
-** IN-PROGRESS Create a testing view for the fretboard and make sure everything looks acceptable
+* User interface [1/1]
+** DONE Create a testing view for the fretboard and make sure everything looks acceptable

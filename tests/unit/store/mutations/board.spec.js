@@ -43,7 +43,8 @@ describe('insertBoard', () => {
         'G#': 'A♭'
       },
       numFrets: 2,
-      numStrings: 2
+      numStrings: 2,
+      startingFret: 0
     }
 
     insertBoard(state, newBoard)
