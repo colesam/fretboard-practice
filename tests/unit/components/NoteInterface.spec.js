@@ -1,9 +1,7 @@
 import { shallowMount } from '@vue/test-utils'
 import NoteInterface from '@/components/NoteInterface'
-import Note from '@/components/Note'
 import state from '@/store/testData/testState.js'
 import getters from '@/store/getters'
-import BoardHelpers from '@/helpers/BoardHelpers'
 
 const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, {
   getNoteAtPosition: getters.getNoteAtPosition(state)

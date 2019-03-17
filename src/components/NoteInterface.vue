@@ -10,6 +10,7 @@
         v-for="(note, stringIndex) in fret"
         :content="notePreferences[note]"
         :note-class="`note__content--${semitonesFromRoot[note]}`"
+        :is-active="positionIsActive({ fret: fretIndex, string: stringIndex })"
         :key="`note--${fretIndex}-${stringIndex}`"
         :ref="`note--${fretIndex}-${stringIndex}`"
         @click="handleNoteClick({ fret: fretIndex, string: stringIndex })"

@@ -2,6 +2,7 @@ import { NOTES } from '@/globals'
 import Board from '@/validation/Board.js'
 import BoardHelpers from '@/helpers/BoardHelpers'
 
+// noinspection JSCommentMatchesSignature
 /**
  * Methods that use logic to return complex data from the vuex store
  * @namespace Vuex.Getters
