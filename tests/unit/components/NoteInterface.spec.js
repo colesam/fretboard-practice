@@ -22,7 +22,8 @@ beforeEach(() => {
     propsData: {
       noteMatrix: getBoardNoteMatrix('1'),
       notePreferences: board.notePreferences,
-      root: board.root
+      root: board.root,
+      positions: board.positions
     }
   }
 })
@@ -101,12 +102,9 @@ describe('NoteInterface', () => {
 
   it("sets Note's isActive prop to true if the note is contained in the positions", () => {
     const wrapper = build(options)
-    const notes = wrapper.findAll(Note)
-    expect(false).toBe(true)
-    notes.forEach(note => {
-      if (BoardHelpers.boardIncludesPosition(board.id, note.props('position'))) {
-        console.log('ree')
-      }
+    wrapper.props('positions').forEach(position => {
+      const note = wrapper.find({ ref: `note--${position.fret}-${position.string}` })
+      expect(note.props('isActive')).toBe(true)
     })
   })
 })

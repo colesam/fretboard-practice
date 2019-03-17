@@ -1,14 +1,14 @@
 const BoardHelpers = {
   /**
    * Determines if a position is included in a board's state
-   * @param {BoardState} board - Board to search through for matching position
-   * @param {Position} position - Position object being searched for
+   * @param {Position[]} positions - Array of positions from the board
+   * @param {Position} searchPosition - Position object being searched for
    * @returns {boolean}
    */
-  boardIncludesPosition(board, position) {
-    const { fret, string } = position
+  boardIncludesPosition(positions, searchPosition) {
+    const { fret, string } = searchPosition
     return (
-      board.positions.find(position => {
+      positions.find(position => {
         return position.fret === fret && position.string === string
       }) !== undefined
     )

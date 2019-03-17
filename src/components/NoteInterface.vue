@@ -21,6 +21,7 @@
 <script>
 import { NOTES } from '@/globals'
 import Note from '@/components/Note'
+import BoardHelpers from '@/helpers/BoardHelpers'
 
 /**
  * Handles all the functionality of the parent Fretboard component
@@ -88,6 +89,10 @@ export default {
       if (this.isEditable) {
         this.$emit('note-click', position)
       }
+    },
+
+    positionIsActive(position) {
+      return BoardHelpers.boardIncludesPosition(this.positions, position)
     }
   }
 }

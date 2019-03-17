@@ -29,7 +29,7 @@ export default {
     // Validation
     Board.validatePosition(position, board)
 
-    return BoardHelpers.boardIncludesPosition(board, position)
+    return BoardHelpers.boardIncludesPosition(board.positions, position)
   },
 
   /**
