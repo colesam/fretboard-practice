@@ -6,7 +6,6 @@ import BoardValidation from '@/validation/Board.js'
  * @namespace Vuex.Actions
  */
 export default {
-  // BOARD ACTIONS
   /**
    * Insert a new board into the store
    * @memberof Vuex.Actions
@@ -29,8 +28,8 @@ export default {
    * @memberof Vuex.Actions
    * @param {Object} context - Automatically added by a live store
    * @param {Object} params
-   * @param {number} params.boardId - Board id of board to change
-   * @param {Position} params.name - New name of the board
+   * @param {Number} params.boardId - Board id of board to change
+   * @param {String} params.name - New name of the board
    */
   setBoardName({ commit }, params) {
     BoardValidation.validateName(params.name)

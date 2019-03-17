@@ -2,6 +2,7 @@ import { describe, it, expect, beforeEach } from '@/plugins/jest' // useful for 
 import initialState from '@/store/testData/testState.js'
 import mutations from '@/store/mutations.js'
 import getters from '@/store/getters.js'
+import Board from '@/classes/Board'
 
 const {
   insertBoard,
@@ -73,11 +74,10 @@ describe('setBoardRoot', () => {
 
 describe('insertBoardPosition', () => {
   it("inserts params.position to the board's positions", () => {
-    const boardIncludesPosition = getters.boardIncludesPosition(state)
     params.position = { fret: 1, string: 3 }
     insertBoardPosition(state, params)
-
-    expect(boardIncludesPosition(params.boardId, params.position)).toBe(true)
+    const boardObj = new Board(state.boards[params.boardId])
+    expect(boardObj.includesPosition(params.position)).toBe(true)
   })
 })
 

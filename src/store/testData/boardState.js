@@ -1,6 +1,6 @@
 export default {
   '1': {
-    id: 1,
+    id: '1',
     name: 'G major arpeggio - pos. 1',
     positions: [
       { fret: 3, string: 0 },
@@ -33,7 +33,7 @@ export default {
   },
 
   '2': {
-    id: 2,
+    id: '2',
     name: 'C major arpeggio - pos. 1',
     positions: [
       { fret: 5, string: 3 },
@@ -65,7 +65,7 @@ export default {
   },
 
   '3': {
-    id: 3,
+    id: '3',
     name: 'A major scale - pos. 2',
     positions: [
       { fret: 0, string: 0 },

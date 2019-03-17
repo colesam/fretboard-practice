@@ -31,7 +31,7 @@ export default {
     }
 
     return {
-      id: ow.number.greaterThan(0),
+      id: ow.string.nonEmpty,
       name: ow.string.nonEmpty,
       positions: ow.array.ofType(position),
       root: note,
