@@ -18,24 +18,6 @@ describe('getBoardList', () => {
   })
 })
 
-describe('getNoteAtPosition', () => {
-  it('returns the correct note at the passed position', () => {
-    const { id } = board
-    expect(getNoteAtPosition(id, { fret: 0, string: 0 })).toBe('E')
-    expect(getNoteAtPosition(id, { fret: 19, string: 3 })).toBe('D')
-    expect(getNoteAtPosition(id, { fret: 3, string: 2 })).toBe('F')
-    expect(getNoteAtPosition(id, { fret: 4, string: 2 })).toBe('F#')
-  })
-
-  it('returns the correct note on boards with a startIndex greater than 0', () => {
-    const id = '3'
-    expect(getNoteAtPosition(id, { fret: 0, string: 0 })).toBe('B')
-    expect(getNoteAtPosition(id, { fret: 1, string: 1 })).toBe('F')
-    expect(getNoteAtPosition(id, { fret: 2, string: 2 })).toBe('B')
-    expect(getNoteAtPosition(id, { fret: 3, string: 3 })).toBe('F')
-  })
-})
-
 describe('getBoardNoteMatrix', () => {
   it('returns a matrix of every note at every position on the fretboard', () => {
     expect(getBoardNoteMatrix('2')).toMatchSnapshot()

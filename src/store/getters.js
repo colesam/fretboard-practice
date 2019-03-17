@@ -19,25 +19,6 @@ export default {
   },
 
   /**
-   * Gets the note at a given position
-   * @memberof Vuex.Getters
-   * @param {number} boardId - Unique identifier of the board
-   * @param {Position} position - Position object used to find the note
-   */
-  getNoteAtPosition: state => (boardId, position) => {
-    const board = state.boards[boardId]
-    const { fret, string } = position
-    const startingFret = board.startingFret != null ? board.startingFret : 0
-
-    Board.validatePosition(position, board)
-
-    const baseNote = board.openTuning[string]
-    const startIndex = NOTES.indexOf(baseNote)
-
-    return NOTES[(startIndex + fret + startingFret) % 12]
-  },
-
-  /**
    * Gets a 2D array representing the notes at every position on the fretboard
    * @memberof Vuex.Getters
    * @param {number} boardId - Unique identifier of the board

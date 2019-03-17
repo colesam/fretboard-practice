@@ -1,3 +1,4 @@
+import { NOTES } from '@/globals'
 import BoardValidator from '@/validation/Board'
 
 /**
@@ -22,6 +23,7 @@ class Board {
     this.name = boardState.name
     this.positions = boardState.positions
     this.root = boardState.root
+    this.openTuning = boardState.openTuning
     this.notePreferences = boardState.notePreferences
     this.numFrets = boardState.numFrets
     this.numStrings = boardState.numStrings
@@ -38,6 +40,7 @@ class Board {
       name: this.name,
       positions: this.positions,
       root: this.root,
+      openTuning: this.openTuning,
       notePreferences: this.notePreferences,
       numFrets: this.numFrets,
       numStrings: this.numStrings,
@@ -51,12 +54,25 @@ class Board {
    * @returns {boolean}
    */
   includesPosition(searchPosition) {
+    BoardValidator.validatePosition(searchPosition, this.getBoardState())
     const { fret, string } = searchPosition
     return (
       this.positions.find(position => {
         return position.fret === fret && position.string === string
       }) !== undefined
     )
+  }
+
+  /**
+   * Gets the note at a given position
+   * @param {Position} position - Position object used to find the note
+   */
+  getNote(position) {
+    BoardValidator.validatePosition(position, this.getBoardState())
+    const { fret, string } = position
+    const baseNote = this.openTuning[string]
+    const startIndex = NOTES.indexOf(baseNote)
+    return NOTES[(startIndex + fret + this.startingFret) % 12]
   }
 }
 

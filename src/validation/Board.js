@@ -16,19 +16,18 @@ export default {
    * @param {BoardState} board
    */
   predicates(board) {
+    // Certain predicates get additional valdiation if a board object is passed
+    let note = ow.string.oneOf(NOTES)
     let position = ow.object
     let openTuning = ow.array.ofType(ow.string.oneOf(NOTES))
-    let note = ow.string.oneOf(NOTES)
     let startingFret = ow.number.greaterThanOrEqual(0)
-
-    // Add additional validation rules that depend on board data
     if (board != null) {
       position = position.exactShape({
         fret: ow.number.inRange(0, board.numFrets),
         string: ow.number.inRange(0, board.numStrings - 1)
       })
       openTuning = openTuning.length(board.numStrings)
-      startingFret = startingFret.lessThan(board.numFrets)
+      startingFret = startingFret.lessThanOrEqual(board.numFrets)
     }
 
     return {
