@@ -28,6 +28,9 @@ class Board {
     this.numFrets = boardState.numFrets
     this.numStrings = boardState.numStrings
     this.startingFret = boardState.startingFret
+
+    // Extra variable for caching purposes
+    this.noteMatrix = null
   }
 
   /**
@@ -73,6 +76,25 @@ class Board {
     const baseNote = this.openTuning[string]
     const startIndex = NOTES.indexOf(baseNote)
     return NOTES[(startIndex + fret + this.startingFret) % 12]
+  }
+
+  /**
+   * Gets a 2D array representing the notes at every position on the fretboard
+   * @return {Array}
+   */
+  getNoteMatrix() {
+    if (this.noteMatrix !== null) {
+      return this.noteMatrix
+    } else {
+      let matrix = []
+      for (let fret = 0; fret < this.numFrets; fret++) {
+        matrix.push([])
+        for (let string = 0; string < this.numStrings; string++) {
+          matrix[fret].push(this.getNote({ fret, string }))
+        }
+      }
+      return matrix
+    }
   }
 }
 

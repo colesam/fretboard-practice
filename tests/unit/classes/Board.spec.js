@@ -32,3 +32,11 @@ describe('getNote', () => {
     expect(board.getNote({ fret: 3, string: 3 })).toBe('F')
   })
 })
+
+describe('getNoteMatrix', () => {
+  it('returns a matrix of every note at every position on the fretboard', () => {
+    expect(board.getNoteMatrix()).toMatchSnapshot()
+    board = new Board(state.boards['3'])
+    expect(board.getNoteMatrix()).toMatchSnapshot()
+  })
+})
