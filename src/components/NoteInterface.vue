@@ -22,7 +22,7 @@
 <script>
 import { NOTES } from '@/globals'
 import Note from '@/components/Note'
-import BoardHelpers from '@/helpers/BoardHelpers'
+import Board from '@/classes/Board'
 
 /**
  * Handles all the functionality of the parent Fretboard component
@@ -93,7 +93,7 @@ export default {
     },
 
     positionIsActive(position) {
-      return BoardHelpers.boardIncludesPosition(this.positions, position)
+      return Board.boardIncludesPosition(this.positions, position)
     }
   }
 }

@@ -1,12 +1,9 @@
-import { describe, it, expect } from '@/plugins/jest' // useful for IDE's
-
 import state from '@/store/testData/testState.js'
 import getters from '@/store/getters.js'
 
 let { getBoardList } = getters
 
 // Need to get functions returned from parameterized getters
-const boardIncludesPosition = getters.boardIncludesPosition(state)
 const getNoteAtPosition = getters.getNoteAtPosition(state)
 const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, { getNoteAtPosition })
 
@@ -18,16 +15,6 @@ describe('getBoardList', () => {
     const result = getBoardList(state)
     expect(Array.isArray(result)).toBe(true)
     expect(result).toMatchSnapshot()
-  })
-})
-
-describe('boardIncludesPosition', () => {
-  it('returns true if the position is included in the board', () => {
-    expect(boardIncludesPosition(board.id, { fret: 3, string: 0 })).toBe(true)
-  })
-
-  it('returns false if the position is not included in the board', () => {
-    expect(boardIncludesPosition(board.id, { fret: 19, string: 3 })).toBe(false)
   })
 })
 

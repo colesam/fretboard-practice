@@ -1,6 +1,6 @@
 import { NOTES } from '@/globals'
 import Board from '@/validation/Board.js'
-import BoardHelpers from '@/helpers/BoardHelpers'
+import Board from '@/classes/Board'
 
 // noinspection JSCommentMatchesSignature
 /**
@@ -16,21 +16,6 @@ export default {
    */
   getBoardList(state) {
     return Object.keys(state.boards).map(id => state.boards[id])
-  },
-
-  /**
-   * Determines if a position is included in a board's state
-   * @memberof Vuex.Getters
-   * @param {number} boardId - Unique identifier of the board
-   * @param {Position} position - Position object being searched for
-   */
-  boardIncludesPosition: state => (boardId, position) => {
-    const board = state.boards[boardId]
-
-    // Validation
-    Board.validatePosition(position, board)
-
-    return BoardHelpers.boardIncludesPosition(board.positions, position)
   },
 
   /**

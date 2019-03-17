@@ -32,7 +32,7 @@ export default {
     }
 
     return {
-      id: ow.string.nonEmpty,
+      id: ow.number.greaterThan(0),
       name: ow.string.nonEmpty,
       positions: ow.array.ofType(position),
       root: note,
@@ -109,21 +109,3 @@ export default {
 }
 
 // Related Type Definitions
-/**
- * @typedef {Object} BoardState
- * @property {String} id - Unique identifier for the fretboard
- * @property {String} name - Name of the fretboard
- * @property {Position[]} positions - Enabled positions of the fretboard
- * @property {String} root - Root note of the fretboard
- * @property {Array} openTuning - Tuning of each note in open position
- * @property {String} notePreferences - Preferred names of each note in the chromatic scale
- * @property {Number} numFrets - Number of frets on this fretboard
- * @property {Number} numStrings - Number of strings on this fretboard
- * @property {Number} startingFret - Fret number that the board starts at
- */
-
-/**
- * @typedef {Object} Position
- * @property {Number} fret - Fret position offset from 0
- * @property {Number} string - String position offset from 0
- */
