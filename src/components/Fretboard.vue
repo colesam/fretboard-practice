@@ -39,6 +39,7 @@
         :note-matrix="noteMatrix"
         :note-preferences="notePreferences"
         :root="root"
+        :positions="positions"
         :is-editable="isEditable"
         @note-click="handleNoteClick"
       />
@@ -56,6 +57,7 @@ import NoteInterface from '@/components/NoteInterface'
  * @vue-prop {Array[]} noteMatrix - 2D array of notes on the fretboard
  * @vue-prop {Object} notePreferences - Object of preferred note names
  * @vue-prop {String} root - Root note of the fretboard
+ * @vue-prop {Position[]} [positions=[]] - Active positions to display
  * @vue-prop {Number} numFrets - Number of frets in the board (including nut)
  * @vue-prop {Boolean} [isEditable=false] - Whether positions can be toggled on or off
  * @vue-prop {Number} [startingFret=0] - First fret of the fretboard (alters styling)
@@ -86,6 +88,10 @@ export default {
     root: {
       type: String,
       required: true
+    },
+    positions: {
+      type: Array,
+      default: () => []
     },
     numFrets: {
       type: Number,

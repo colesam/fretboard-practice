@@ -14,6 +14,7 @@
           :note-matrix="getBoardNoteMatrix(board.id)"
           :note-preferences="board.notePreferences"
           :root="board.root"
+          :positions="board.positions"
           :numFrets="board.numFrets"
           :is-editable="true"
           :starting-fret="board.startingFret"
