@@ -2,11 +2,7 @@ import { shallowMount } from '@vue/test-utils'
 import Fretboard from '@/components/Fretboard'
 import NoteInterface from '@/components/NoteInterface'
 import state from '@/store/testData/testState.js'
-import getters from '@/store/getters'
-
-const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, {
-  getNoteAtPosition: getters.getNoteAtPosition(state)
-})
+import Board from '@/classes/Board'
 
 const build = options => {
   return shallowMount(Fretboard, options)
@@ -18,19 +14,11 @@ beforeEach(() => {
   const board = state.boards['1']
   options = {
     propsData: {
-      noteMatrix: getBoardNoteMatrix('1'),
-      notePreferences: board.notePreferences,
-      root: board.root,
-      numFrets: board.numFrets
+      board: new Board(board)
     }
   }
 })
 
-// creates a fret for every fret in noteMatrix
-// renders a nut if the starting fret is 0
-// does not render nut if starting fret is not 0
-// renders the note interface child component
-// emits the note click event
 describe('Fretboard', () => {
   it('renders', () => {
     const wrapper = build(options)
@@ -38,14 +26,10 @@ describe('Fretboard', () => {
   })
 
   it('renders a visual fret for every fret in the noteMatrix prop', () => {
-    const board = state.boards['3']
-    const noteMatrix = getBoardNoteMatrix(board.id) // this should fail
+    const board = new Board(state.boards['3'])
+    const noteMatrix = board.getNoteMatrix()
     options.propsData = {
-      noteMatrix: getBoardNoteMatrix(board.id),
-      notePreferences: board.notePreferences,
-      root: board.root,
-      numFrets: board.numFrets,
-      startingFret: board.startingFret
+      board
     }
     const wrapper = build(options)
     expect(wrapper.findAll('.fretboard__fret').length).toBe(noteMatrix.length)
@@ -54,8 +38,11 @@ describe('Fretboard', () => {
   it('renders a nut only if the starting fret is 0', () => {
     let wrapper = build(options)
     expect(wrapper.find('.fretboard__nut').exists()).toBe(true)
+
+    let board = new Board(state.boards['1'])
+    board.startingFret = 1
     wrapper.setProps({
-      startingFret: 1
+      board
     })
     expect(wrapper.find('.fretboard__nut').exists()).toBe(false)
   })
@@ -63,8 +50,8 @@ describe('Fretboard', () => {
   it('includes the nut as a fret if the starting fret is 0', () => {
     options.startingFret = 0
     const wrapper = build(options)
-    const { noteMatrix } = options.propsData
-    expect(wrapper.findAll('.fretboard__fret').length + 1).toBe(noteMatrix.length)
+    const { board } = options.propsData
+    expect(wrapper.findAll('.fretboard__fret').length + 1).toBe(board.getNoteMatrix().length)
   })
 
   it('renders a noteInterface child component', () => {

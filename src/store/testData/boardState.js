@@ -85,7 +85,7 @@ export default {
       { fret: 4, string: 3 },
       { fret: 6, string: 3 }
     ],
-    root: 'G',
+    root: 'A',
     openTuning: ['E', 'A', 'D', 'G'],
     notePreferences: {
       A: 'A',

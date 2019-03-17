@@ -1,16 +1,16 @@
 <template>
   <div class="note-interface">
     <div
-      v-for="(fret, fretIndex) in noteMatrix"
+      v-for="(fret, fretIndex) in board.getNoteMatrix()"
       class="note-interface__fret"
       :class="`fret-${fretIndex}`"
       :key="`fret--${fretIndex}`"
     >
       <note
         v-for="(note, stringIndex) in fret"
-        :content="notePreferences[note]"
+        :content="board.notePreferences[note]"
         :note-class="`note__content--${semitonesFromRoot[note]}`"
-        :is-active="positionIsActive({ fret: fretIndex, string: stringIndex })"
+        :is-active="board.includesPosition({ fret: fretIndex, string: stringIndex })"
         :key="`note--${fretIndex}-${stringIndex}`"
         :ref="`note--${fretIndex}-${stringIndex}`"
         @click="handleNoteClick({ fret: fretIndex, string: stringIndex })"
@@ -28,10 +28,7 @@ import Board from '@/classes/Board'
  * Handles all the functionality of the parent Fretboard component
  * @namespace Components.NoteInterface
  *
- * @vue-prop {Array[]} noteMatrix - 2D array of notes on the fretboard
- * @vue-prop {Object} notePreferences - Object of preferred note names
- * @vue-prop {String} root - Root note of the fretboard
- * @vue-prop {Position[]} [positions=[]] - Active positions to display
+ * @vue-prop {Board} board - Board object to display
  * @vue-prop {Boolean} [isEditable=false] - Whether positions can be toggled on or off
  *
  * @vue-event {Position} note-click - Emit position of note that was clicked
@@ -52,21 +49,9 @@ export default {
   },
 
   props: {
-    noteMatrix: {
-      type: Array,
+    board: {
+      type: Board,
       required: true
-    },
-    notePreferences: {
-      type: Object,
-      required: true
-    },
-    root: {
-      type: String,
-      required: true
-    },
-    positions: {
-      type: Array,
-      default: () => []
     },
     isEditable: {
       type: Boolean,
@@ -76,7 +61,7 @@ export default {
 
   methods: {
     calculateSemitonesFromRoot(note) {
-      const rootIndex = NOTES.indexOf(this.root)
+      const rootIndex = NOTES.indexOf(this.board.root)
       let semitones
       for (let i = 0; i < 12; i++) {
         if (NOTES[(rootIndex + i) % 12] === note) {
@@ -90,10 +75,6 @@ export default {
       if (this.isEditable) {
         this.$emit('note-click', position)
       }
-    },
-
-    positionIsActive(position) {
-      return Board.boardIncludesPosition(this.positions, position)
     }
   }
 }
