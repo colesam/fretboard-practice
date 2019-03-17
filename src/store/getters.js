@@ -1,5 +1,6 @@
 import { NOTES } from '@/globals'
 import Board from '@/validation/Board.js'
+import BoardHelpers from '@/helpers/BoardHelpers'
 
 /**
  * Methods that use logic to return complex data from the vuex store
@@ -24,16 +25,11 @@ export default {
    */
   boardIncludesPosition: state => (boardId, position) => {
     const board = state.boards[boardId]
-    const { fret, string } = position
 
     // Validation
     Board.validatePosition(position, board)
 
-    return (
-      board.positions.find(position => {
-        return position.fret === fret && position.string === string
-      }) !== undefined
-    )
+    return BoardHelpers.boardIncludesPosition(board, position)
   },
 
   /**

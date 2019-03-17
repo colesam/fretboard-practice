@@ -1,7 +1,9 @@
 import { shallowMount } from '@vue/test-utils'
 import NoteInterface from '@/components/NoteInterface'
+import Note from '@/components/Note'
 import state from '@/store/testData/testState.js'
 import getters from '@/store/getters'
+import BoardHelpers from '@/helpers/BoardHelpers'
 
 const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, {
   getNoteAtPosition: getters.getNoteAtPosition(state)
@@ -13,8 +15,9 @@ const build = options => {
 // test that semitonesFromRoot() responds when root note is changed
 // Default props
 let options
+let board
 beforeEach(() => {
-  const board = state.boards['1']
+  board = state.boards['1']
   options = {
     propsData: {
       noteMatrix: getBoardNoteMatrix('1'),
@@ -94,5 +97,16 @@ describe('NoteInterface', () => {
     wrapper.vm.handleNoteClick(position)
 
     expect(wrapper.emitted('note-click')).toBeUndefined()
+  })
+
+  it("sets Note's isActive prop to true if the note is contained in the positions", () => {
+    const wrapper = build(options)
+    const notes = wrapper.findAll(Note)
+    expect(false).toBe(true)
+    notes.forEach(note => {
+      if (BoardHelpers.boardIncludesPosition(board.id, note.props('position'))) {
+        console.log('ree')
+      }
+    })
   })
 })

@@ -29,6 +29,7 @@ import Note from '@/components/Note'
  * @vue-prop {Array[]} noteMatrix - 2D array of notes on the fretboard
  * @vue-prop {Object} notePreferences - Object of preferred note names
  * @vue-prop {String} root - Root note of the fretboard
+ * @vue-prop {Position[]} [positions=[]] - Active positions to display
  * @vue-prop {Boolean} [isEditable=false] - Whether positions can be toggled on or off
  *
  * @vue-event {Position} note-click - Emit position of note that was clicked
@@ -60,6 +61,10 @@ export default {
     root: {
       type: String,
       required: true
+    },
+    positions: {
+      type: Array,
+      default: () => []
     },
     isEditable: {
       type: Boolean,
