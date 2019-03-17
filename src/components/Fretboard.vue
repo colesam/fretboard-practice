@@ -164,6 +164,7 @@ export default {
 
 .fretboard__nut {
   width: 100px;
+  min-width: 100px;
   background: #564c45;
   border-right: 4px solid #d8d8d8;
   box-sizing: border-box;

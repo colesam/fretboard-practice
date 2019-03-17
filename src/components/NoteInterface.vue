@@ -116,6 +116,7 @@ export default {
 }
 
 .note-interface__fret {
+  width: 100px;
   display: flex;
   flex-direction: column;
   justify-content: stretch;
