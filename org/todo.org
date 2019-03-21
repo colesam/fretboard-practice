@@ -1,9 +1,9 @@
 #+TITLE: TODO NOTES
 
 
-* Vuetify [0/2]
-** TODO Create reusable card component
-** TODO Create reusable modal component
+* Vuetify [1/2]
+** IN-PROGRESS Create reusable modal component
+** DONE Create reusable card component
 * Exercises [0/1]
 ** TODO Create reusable exercise form that can be placed in a card or in a modal
 * Documentation [2/3]
