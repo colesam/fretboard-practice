@@ -1,6 +1,11 @@
 #+TITLE: TODO NOTES
 
 
+* Vuetify [0/2]
+** TODO Create reusable card component
+** TODO Create reusable modal component
+* Exercises [0/1]
+** TODO Create reusable exercise form that can be placed in a card or in a modal
 * Documentation [2/3]
 - for vue components, only document the public interface (e.g. props and events)
 ** TODO Update BoardState documentation to include the new startingFret attribute
