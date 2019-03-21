@@ -16,19 +16,18 @@ export default {
    * @param {BoardState} board
    */
   predicates(board) {
+    // Certain predicates get additional valdiation if a board object is passed
+    let note = ow.string.oneOf(NOTES)
     let position = ow.object
     let openTuning = ow.array.ofType(ow.string.oneOf(NOTES))
-    let note = ow.string.oneOf(NOTES)
     let startingFret = ow.number.greaterThanOrEqual(0)
-
-    // Add additional validation rules that depend on board data
     if (board != null) {
       position = position.exactShape({
         fret: ow.number.inRange(0, board.numFrets),
         string: ow.number.inRange(0, board.numStrings - 1)
       })
       openTuning = openTuning.length(board.numStrings)
-      startingFret = startingFret.lessThan(board.numFrets)
+      startingFret = startingFret.lessThanOrEqual(board.numFrets)
     }
 
     return {
@@ -109,21 +108,3 @@ export default {
 }
 
 // Related Type Definitions
-/**
- * @typedef {Object} BoardState
- * @property {String} id - Unique identifier for the fretboard
- * @property {String} name - Name of the fretboard
- * @property {Position[]} positions - Enabled positions of the fretboard
- * @property {String} root - Root note of the fretboard
- * @property {Array} openTuning - Tuning of each note in open position
- * @property {String} notePreferences - Preferred names of each note in the chromatic scale
- * @property {Number} numFrets - Number of frets on this fretboard
- * @property {Number} numStrings - Number of strings on this fretboard
- * @property {Number} startingFret - Fret number that the board starts at
- */
-
-/**
- * @typedef {Object} Position
- * @property {Number} fret - Fret position offset from 0
- * @property {Number} string - String position offset from 0
- */

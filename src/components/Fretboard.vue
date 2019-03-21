@@ -3,7 +3,7 @@
     <div class="fretboard">
       <!-- Displays the fretboard background (no functionality)-->
       <div class="fretboard__display">
-        <div v-if="startingFret === 0" class="fretboard__nut fret-0"></div>
+        <div v-if="board.startingFret === 0" class="fretboard__nut fret-0"></div>
         <div class="d-flex flex-row justify-content-start align-items-stretch w-100">
           <div
             v-for="(fret, fretIndex) in frets"
@@ -35,32 +35,21 @@
         </div>
       </div>
 
-      <note-interface
-        :note-matrix="noteMatrix"
-        :note-preferences="notePreferences"
-        :root="root"
-        :positions="positions"
-        :is-editable="isEditable"
-        @note-click="handleNoteClick"
-      />
+      <note-interface :board="board" :is-editable="isEditable" @note-click="handleNoteClick" />
     </div>
   </div>
 </template>
 
 <script>
 import NoteInterface from '@/components/NoteInterface'
+import Board from '@/classes/Board'
 
 /**
  * Visual component, deligates all functionality to NoteInterface
  * @namespace Components.Fretboard
  *
- * @vue-prop {Array[]} noteMatrix - 2D array of notes on the fretboard
- * @vue-prop {Object} notePreferences - Object of preferred note names
- * @vue-prop {String} root - Root note of the fretboard
- * @vue-prop {Position[]} [positions=[]] - Active positions to display
- * @vue-prop {Number} numFrets - Number of frets in the board (including nut)
+ * @vue-prop {Board} board - Board object to display
  * @vue-prop {Boolean} [isEditable=false] - Whether positions can be toggled on or off
- * @vue-prop {Number} [startingFret=0] - First fret of the fretboard (alters styling)
  *
  * @vue-event {Position} note-click - Emit position of note that was clicked
  */
@@ -72,38 +61,18 @@ export default {
   computed: {
     frets() {
       // If startingFret is 0, chop off last fret because nut is included (display issue only)
-      return this.startingFret === 0 ? this.numFrets - 1 : this.numFrets
+      return this.board.startingFret === 0 ? this.board.numFrets - 1 : this.board.numFrets
     }
   },
 
   props: {
-    noteMatrix: {
-      type: Array,
-      required: true
-    },
-    notePreferences: {
-      type: Object,
-      required: true
-    },
-    root: {
-      type: String,
-      required: true
-    },
-    positions: {
-      type: Array,
-      default: () => []
-    },
-    numFrets: {
-      type: Number,
+    board: {
+      type: Board,
       required: true
     },
     isEditable: {
       type: Boolean,
       default: false
-    },
-    startingFret: {
-      type: Number,
-      default: 0
     }
   },
 

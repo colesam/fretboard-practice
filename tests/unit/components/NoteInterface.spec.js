@@ -1,27 +1,19 @@
 import { shallowMount } from '@vue/test-utils'
 import NoteInterface from '@/components/NoteInterface'
 import state from '@/store/testData/testState.js'
-import getters from '@/store/getters'
-
-const getBoardNoteMatrix = getters.getBoardNoteMatrix(state, {
-  getNoteAtPosition: getters.getNoteAtPosition(state)
-})
+import Board from '@/classes/Board'
 
 const build = options => {
   return shallowMount(NoteInterface, options)
 }
-// test that semitonesFromRoot() responds when root note is changed
-// Default props
+
 let options
 let board
 beforeEach(() => {
-  board = state.boards['1']
+  board = new Board(state.boards['1'])
   options = {
     propsData: {
-      noteMatrix: getBoardNoteMatrix('1'),
-      notePreferences: board.notePreferences,
-      root: board.root,
-      positions: board.positions
+      board
     }
   }
 })
@@ -34,7 +26,7 @@ describe('NoteInterface', () => {
 
   it('renders every note in the noteMatrix prop', () => {
     const wrapper = build(options)
-    options.propsData.noteMatrix.forEach((fret, fretIndex) => {
+    board.getNoteMatrix().forEach((fret, fretIndex) => {
       fret.forEach((note, stringIndex) => {
         expect(wrapper.find({ ref: `note--${fretIndex}-${stringIndex}` }).exists()).toBe(true)
       })
@@ -59,11 +51,12 @@ describe('NoteInterface', () => {
     })
   })
 
-  it('recalculates the semitones from root when the root prop is changed', () => {
+  it('recalculates the semitones from root when the board prop is changed', () => {
+    board = new Board(state.boards['3'])
+    options.propsData = {
+      board
+    }
     const wrapper = build(options)
-    wrapper.setProps({
-      root: 'A'
-    })
     expect(wrapper.vm.semitonesFromRoot).toMatchObject({
       A: 0,
       'A#': 1,
@@ -100,7 +93,7 @@ describe('NoteInterface', () => {
 
   it("sets Note's isActive prop to true if the note is contained in the positions", () => {
     const wrapper = build(options)
-    wrapper.props('positions').forEach(position => {
+    board.positions.forEach(position => {
       const note = wrapper.find({ ref: `note--${position.fret}-${position.string}` })
       expect(note.props('isActive')).toBe(true)
     })

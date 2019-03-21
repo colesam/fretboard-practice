@@ -1,0 +1,167 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`getNoteMatrix returns a matrix of every note at every position on the fretboard 1`] = `
+Array [
+  Array [
+    "E",
+    "A",
+    "D",
+    "G",
+  ],
+  Array [
+    "F",
+    "A#",
+    "D#",
+    "G#",
+  ],
+  Array [
+    "F#",
+    "B",
+    "E",
+    "A",
+  ],
+  Array [
+    "G",
+    "C",
+    "F",
+    "A#",
+  ],
+  Array [
+    "G#",
+    "C#",
+    "F#",
+    "B",
+  ],
+  Array [
+    "A",
+    "D",
+    "G",
+    "C",
+  ],
+  Array [
+    "A#",
+    "D#",
+    "G#",
+    "C#",
+  ],
+  Array [
+    "B",
+    "E",
+    "A",
+    "D",
+  ],
+  Array [
+    "C",
+    "F",
+    "A#",
+    "D#",
+  ],
+  Array [
+    "C#",
+    "F#",
+    "B",
+    "E",
+  ],
+  Array [
+    "D",
+    "G",
+    "C",
+    "F",
+  ],
+  Array [
+    "D#",
+    "G#",
+    "C#",
+    "F#",
+  ],
+  Array [
+    "E",
+    "A",
+    "D",
+    "G",
+  ],
+  Array [
+    "F",
+    "A#",
+    "D#",
+    "G#",
+  ],
+  Array [
+    "F#",
+    "B",
+    "E",
+    "A",
+  ],
+  Array [
+    "G",
+    "C",
+    "F",
+    "A#",
+  ],
+  Array [
+    "G#",
+    "C#",
+    "F#",
+    "B",
+  ],
+  Array [
+    "A",
+    "D",
+    "G",
+    "C",
+  ],
+  Array [
+    "A#",
+    "D#",
+    "G#",
+    "C#",
+  ],
+]
+`;
+
+exports[`getNoteMatrix returns a matrix of every note at every position on the fretboard 2`] = `
+Array [
+  Array [
+    "B",
+    "E",
+    "A",
+    "D",
+  ],
+  Array [
+    "C",
+    "F",
+    "A#",
+    "D#",
+  ],
+  Array [
+    "C#",
+    "F#",
+    "B",
+    "E",
+  ],
+  Array [
+    "D",
+    "G",
+    "C",
+    "F",
+  ],
+  Array [
+    "D#",
+    "G#",
+    "C#",
+    "F#",
+  ],
+  Array [
+    "E",
+    "A",
+    "D",
+    "G",
+  ],
+  Array [
+    "F",
+    "A#",
+    "D#",
+    "G#",
+  ],
+]
+`;
