@@ -3,9 +3,10 @@
 
 * Exercises [0/1]
 ** TODO Create reusable exercise form that can be placed in a card or in a modal
-* Fretboard [0/2]
+* Fretboard [0/3]
 ** TODO Create component that can toggle fretboard fret count
 ** TODO Create component that can change fretboard root note
+** IN-PROGRESS Turn off text selection on notes
 * Documentation [2/3]
 - for vue components, only document the public interface (e.g. props and events)
 ** TODO Update BoardState documentation to include the new startingFret attribute

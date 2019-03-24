@@ -10,6 +10,7 @@
         v-for="(note, stringIndex) in fret"
         :content="board.notePreferences[note]"
         :note-class="`note__content--${semitonesFromRoot[note]}`"
+        :is-hoverable="isEditable"
         :is-active="board.includesPosition({ fret: fretIndex, string: stringIndex })"
         :key="`note--${fretIndex}-${stringIndex}`"
         :ref="`note--${fretIndex}-${stringIndex}`"
