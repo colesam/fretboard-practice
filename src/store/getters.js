@@ -1,3 +1,5 @@
+import Board from '@/classes/Board'
+
 // noinspection JSCommentMatchesSignature
 /**
  * Methods that use logic to return complex data from the vuex store
@@ -9,5 +11,5 @@ export default {
    * @memberof Vuex.Getters
    * @param {Object} state
    */
-  getBoardList: state => Object.keys(state.boards).map(id => state.boards[id])
+  getBoardList: state => Object.keys(state.boards).map(id => new Board(state.boards[id]))
 }

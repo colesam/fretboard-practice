@@ -4,19 +4,10 @@
       Sidebar
     </template>
     <template v-slot:content>
-      <div v-for="board in boards" :key="`board-display-${board.id}`">
+      <div v-for="board in getBoardList" :key="`board-display-${board.id}`">
         <v-card class="d-inline-block pa-3 mb-4 max">
           <v-card-title class="pa-0 mb-3" primary-title>{{ board.name }}</v-card-title>
-          <fretboard
-            :note-matrix="getBoardNoteMatrix(board.id)"
-            :note-preferences="board.notePreferences"
-            :root="board.root"
-            :positions="board.positions"
-            :numFrets="board.numFrets"
-            :is-editable="true"
-            :starting-fret="board.startingFret"
-            :key="board.id"
-          />
+          <fretboard :board="board" :is-editable="true" :key="board.id" />
         </v-card>
       </div>
     </template>
@@ -26,7 +17,7 @@
 <script>
 import BaseLayout from '@/components/BaseLayout'
 import Fretboard from '@/components/Fretboard'
-import { mapState, mapGetters } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
   components: {
@@ -34,8 +25,7 @@ export default {
     Fretboard
   },
   computed: {
-    ...mapState(['boards']),
-    ...mapGetters(['getBoardNoteMatrix'])
+    ...mapGetters(['getBoardList'])
   }
 }
 </script>
