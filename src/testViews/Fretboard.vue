@@ -7,7 +7,12 @@
       <div v-for="(board, index) in getBoardList" :key="`board-display-${board.id}`">
         <v-card class="d-inline-block pa-3 mb-4 max">
           <v-card-title class="pa-0 mb-3" primary-title>{{ board.name }}</v-card-title>
-          <fretboard :board="board" :is-editable="index === 0" :key="board.id" />
+          <fretboard
+            :board="board"
+            :is-editable="index === 0"
+            @note-click="handleNoteClick"
+            :key="board.id"
+          />
         </v-card>
       </div>
     </template>
@@ -26,6 +31,12 @@ export default {
   },
   computed: {
     ...mapGetters(['getBoardList'])
+  },
+
+  methods: {
+    handleNoteClick(position) {
+      console.log(position)
+    }
   }
 }
 </script>

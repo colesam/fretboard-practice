@@ -14,7 +14,7 @@
         :is-active="board.includesPosition({ fret: fretIndex, string: stringIndex })"
         :key="`note--${fretIndex}-${stringIndex}`"
         :ref="`note--${fretIndex}-${stringIndex}`"
-        @click="handleNoteClick({ fret: fretIndex, string: stringIndex })"
+        @click.native="handleNoteClick({ fret: fretIndex, string: stringIndex })"
       ></note>
     </div>
   </div>
