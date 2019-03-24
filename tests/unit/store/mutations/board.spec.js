@@ -1,10 +1,7 @@
-import { describe, it, expect, beforeEach } from '@/plugins/jest' // useful for IDE's
 import initialState from '@/store/testData/testState.js'
 import mutations from '@/store/mutations.js'
-import getters from '@/store/getters.js'
-import Board from '@/classes/Board'
 
-const { insertBoard } = mutations
+const { insertBoard, setBoard } = mutations
 
 let state
 beforeEach(() => {
@@ -42,4 +39,8 @@ describe('insertBoard', () => {
 
     expect(state.boards[newBoard.id]).toMatchObject(newBoard)
   })
+})
+
+describe('setBoard', () => {
+  it('updates state.boards at board.id', () => {})
 })

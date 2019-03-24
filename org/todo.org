@@ -13,6 +13,8 @@
 ** TODO Update BoardState documentation to include the new startingFret attribute
 ** DONE Document props on Note.vue
 ** DONE Setup a vuex, validation, and components namespace with subnamespaces
+* Vuex [0/1]
+** TODO Add setBoard action/mutation
 * Testing [2/2]
 ** DONE Refactor, test, and document Fretboard.vue
 - [X] Create test for if a Note is in active positions and render the Note component
