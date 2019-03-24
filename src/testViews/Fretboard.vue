@@ -4,10 +4,10 @@
       Sidebar
     </template>
     <template v-slot:content>
-      <div v-for="board in getBoardList" :key="`board-display-${board.id}`">
+      <div v-for="(board, index) in getBoardList" :key="`board-display-${board.id}`">
         <v-card class="d-inline-block pa-3 mb-4 max">
           <v-card-title class="pa-0 mb-3" primary-title>{{ board.name }}</v-card-title>
-          <fretboard :board="board" :is-editable="true" :key="board.id" />
+          <fretboard :board="board" :is-editable="index === 0" :key="board.id" />
         </v-card>
       </div>
     </template>

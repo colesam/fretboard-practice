@@ -65,7 +65,7 @@ export default {
 
   flex-grow: 1;
   opacity: 0;
-
+  user-select: none;
   transition: all 0.1s;
 
   &.active {
