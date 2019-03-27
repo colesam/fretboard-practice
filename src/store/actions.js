@@ -20,6 +20,6 @@ export default {
     }
 
     BoardValidation.validateBoard(board)
-    commit('insertBoard', board)
+    commit('setBoard', board)
   }
 }

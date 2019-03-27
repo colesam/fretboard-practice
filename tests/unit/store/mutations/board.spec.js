@@ -1,14 +1,14 @@
 import initialState from '@/store/testData/testState.js'
 import mutations from '@/store/mutations.js'
 
-const { insertBoard, setBoard } = mutations
+const { setBoard } = mutations
 
 let state
 beforeEach(() => {
   state = JSON.parse(JSON.stringify(initialState))
 })
 
-describe('insertBoard', () => {
+describe('setBoard', () => {
   it('inserts a board into state.boards at board.id', () => {
     const newBoard = {
       id: 'test123',
@@ -35,12 +35,8 @@ describe('insertBoard', () => {
       startingFret: 0
     }
 
-    insertBoard(state, newBoard)
+    setBoard(state, newBoard)
 
     expect(state.boards[newBoard.id]).toMatchObject(newBoard)
   })
-})
-
-describe('setBoard', () => {
-  it('updates state.boards at board.id', () => {})
 })

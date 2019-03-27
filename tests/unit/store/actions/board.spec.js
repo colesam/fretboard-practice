@@ -57,7 +57,7 @@ describe('insertBoard', () => {
       state
     }
     insertBoard(context, newBoard)
-    expect(mockCalls[0][0]).toBe('insertBoard')
+    expect(mockCalls[0][0]).toBe('setBoard')
     expect(mockCalls[0][1]).toBe(newBoard)
   })
 

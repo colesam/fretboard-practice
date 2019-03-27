@@ -5,12 +5,12 @@
 export default {
   // BOARD MUTATIONS
   /**
-   * Inserts a board into the store
+   * Updates a boards state in the store
    * @memberof Vuex.Mutations
    * @param {Object} state
    * @param {BoardState} board
    */
-  insertBoard(state, board) {
+  setBoard(state, board) {
     state.boards[board.id] = board
   }
 }

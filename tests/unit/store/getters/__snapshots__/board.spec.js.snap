@@ -2,9 +2,10 @@
 
 exports[`getBoardList returns an array of all boards in the vuex store 1`] = `
 Array [
-  Object {
+  Board {
     "id": "1",
     "name": "G major arpeggio - pos. 1",
+    "noteMatrix": null,
     "notePreferences": Object {
       "A": "A",
       "A#": "B♭",
@@ -60,9 +61,10 @@ Array [
     "root": "G",
     "startingFret": 0,
   },
-  Object {
+  Board {
     "id": "2",
     "name": "C major arpeggio - pos. 1",
+    "noteMatrix": null,
     "notePreferences": Object {
       "A": "A",
       "A#": "B♭",
@@ -114,9 +116,10 @@ Array [
     "root": "C",
     "startingFret": 0,
   },
-  Object {
+  Board {
     "id": "3",
     "name": "A major scale - pos. 2",
+    "noteMatrix": null,
     "notePreferences": Object {
       "A": "A",
       "A#": "B♭",
