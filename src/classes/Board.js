@@ -105,7 +105,7 @@ class Board {
  * @property {Position[]} positions - Enabled positions of the fretboard
  * @property {String} root - Root note of the fretboard
  * @property {Array} openTuning - Tuning of each note in open position
- * @property {String} notePreferences - Preferred names of each note in the chromatic scale
+ * @property {Object} notePreferences - Preferred names of each note in the chromatic scale
  * @property {Number} numFrets - Number of frets on this fretboard
  * @property {Number} numStrings - Number of strings on this fretboard
  * @property {Number} startingFret - Fret number that the board starts at

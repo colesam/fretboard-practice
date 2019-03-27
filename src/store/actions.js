@@ -21,5 +21,16 @@ export default {
 
     BoardValidation.validateBoard(board)
     commit('setBoard', board)
+  },
+
+  /**
+   * Updates a board in the store
+   * @memberof Vuex.Actions
+   * @param {Object} context - Automatically added by a live store
+   * @param {BoardState} board
+   */
+  setBoard({ commit }, board) {
+    BoardValidation.validateBoard(board)
+    commit('setBoard', board)
   }
 }
