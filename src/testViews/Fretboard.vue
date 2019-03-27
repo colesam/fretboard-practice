@@ -10,7 +10,7 @@
           <fretboard
             :board="board"
             :is-editable="index === 0"
-            @note-click="handleNoteClick"
+            @note-click="handleNoteClick($event, board)"
             :key="board.id"
           />
         </v-card>
@@ -22,7 +22,7 @@
 <script>
 import BaseLayout from '@/components/BaseLayout'
 import Fretboard from '@/components/Fretboard'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
   components: {
@@ -34,8 +34,20 @@ export default {
   },
 
   methods: {
-    handleNoteClick(position) {
-      console.log(position)
+    ...mapActions(['setBoard']),
+
+    handleNoteClick(position, board) {
+      if (!board.includesPosition(position)) {
+        // Insert position
+        board.positions.push(position)
+      } else {
+        // Remove position
+        const { fret, string } = position
+        board.positions = board.positions.filter(
+          position => position.fret !== fret || position.string !== string
+        )
+      }
+      this.setBoard(board.getBoardState())
     }
   }
 }
