@@ -79,6 +79,14 @@ class Board {
   }
 
   /**
+   * Gets the preferred notes in the form of an array
+   * @returns {Array} preferredNotes
+   */
+  getPreferredNotes() {
+    return Object.keys(this.notePreferences).map(key => this.notePreferences[key])
+  }
+
+  /**
    * Gets a 2D array representing the notes at every position on the fretboard
    * @return {Array}
    */

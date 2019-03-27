@@ -33,6 +33,14 @@ describe('getNote', () => {
   })
 })
 
+describe('getPreferredNotes', () => {
+  it("returns an array of the board's preferred notes", () => {
+    const notePreferences = board.getPreferredNotes()
+    expect(Array.isArray(notePreferences)).toBe(true)
+    expect(notePreferences[1]).toBe('B♭')
+  })
+})
+
 describe('getNoteMatrix', () => {
   it('returns a matrix of every note at every position on the fretboard', () => {
     expect(board.getNoteMatrix()).toMatchSnapshot()

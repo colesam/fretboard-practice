@@ -7,6 +7,15 @@
       <div v-for="(board, index) in getBoardList" :key="`board-display-${board.id}`">
         <v-card class="d-inline-block pa-3 mb-4 max">
           <v-card-title class="pa-0 mb-3" primary-title>{{ board.name }}</v-card-title>
+          <v-flex xs2>
+            <v-select
+              v-if="index === 0"
+              label="Root note"
+              :value="board.root"
+              :items="rootSelectItems(board)"
+              @input="handleRootSelect($event, board)"
+            ></v-select>
+          </v-flex>
           <fretboard
             :board="board"
             :is-editable="index === 0"
@@ -20,6 +29,7 @@
 </template>
 
 <script>
+import { NOTES } from '@/globals'
 import BaseLayout from '@/components/BaseLayout'
 import Fretboard from '@/components/Fretboard'
 import { mapGetters, mapActions } from 'vuex'
@@ -29,8 +39,15 @@ export default {
     BaseLayout,
     Fretboard
   },
+
   computed: {
     ...mapGetters(['getBoardList'])
+  },
+
+  data() {
+    return {
+      NOTES
+    }
   },
 
   methods: {
@@ -48,6 +65,22 @@ export default {
         )
       }
       this.setBoard(board.getBoardState())
+    },
+
+    // Note will belong to the NOTE global not notePreferences
+    handleRootSelect(note, board) {
+      board.root = note
+      this.setBoard(board.getBoardState())
+    },
+
+    // Formats the board's notes so that the select emits regular NOTES and displays notePreferences
+    rootSelectItems(board) {
+      return Object.keys(board.notePreferences).map(key => {
+        return {
+          value: key,
+          text: board.notePreferences[key]
+        }
+      })
     }
   }
 }
@@ -56,5 +89,9 @@ export default {
 <style>
 .max {
   max-width: 100% !important;
+}
+
+.width-auto {
+  width: auto !important;
 }
 </style>
