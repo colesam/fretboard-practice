@@ -1,50 +1,24 @@
 import { describe, it, expect, beforeEach } from '@/plugins/jest' // useful for IDE's
 import initialState from '@/store/testData/testState.js'
-import getters from '@/store/getters.js'
 import actions from '@/store/actions.js'
 
-const { insertBoard } = actions
+const { insertBoard, setBoard } = actions
 
 let state
-let params
+let testBoard
 let mockCommit
 let mockCalls
 beforeEach(() => {
   state = JSON.parse(JSON.stringify(initialState))
-  params = {
-    boardId: '1'
-  }
+  testBoard = state.boards['1']
   mockCommit = jest.fn()
   mockCalls = mockCommit.mock.calls
 })
 
 describe('insertBoard', () => {
-  let newBoard
   let context
   beforeEach(() => {
-    newBoard = {
-      name: 'Test Insert',
-      positions: [],
-      root: 'A',
-      openTuning: ['A', 'A'],
-      notePreferences: {
-        A: 'A',
-        'A#': 'B♭',
-        B: 'B',
-        C: 'C',
-        'C#': 'C#',
-        D: 'D',
-        'D#': 'E♭',
-        E: 'E',
-        F: 'F',
-        'F#': 'F#',
-        G: 'G',
-        'G#': 'A♭'
-      },
-      numFrets: 2,
-      numStrings: 2,
-      startingFret: 0
-    }
+    delete testBoard.id
     context = {
       commit: mockCommit,
       state
@@ -52,18 +26,30 @@ describe('insertBoard', () => {
   })
 
   it('commits the insertBoard mutation', () => {
+    insertBoard(context, testBoard)
+    expect(mockCalls[0][0]).toBe('setBoard')
+    expect(mockCalls[0][1]).toBe(testBoard)
+  })
+
+  it('assigns a unique id to the board', () => {
+    expect(testBoard.id).toBeUndefined()
+    insertBoard(context, testBoard)
+    expect(mockCalls[0][1].id).not.toBeUndefined()
+  })
+})
+
+describe('setBoard', () => {
+  beforeEach(() => {
+    testBoard.name = 'New Name'
+  })
+
+  it('commits the setBoard mutation', () => {
     const context = {
       commit: mockCommit,
       state
     }
-    insertBoard(context, newBoard)
+    setBoard(context, testBoard)
     expect(mockCalls[0][0]).toBe('setBoard')
-    expect(mockCalls[0][1]).toBe(newBoard)
-  })
-
-  it('assigns a unique id to the board', () => {
-    expect(newBoard.id).toBeUndefined()
-    insertBoard(context, newBoard)
-    expect(mockCalls[0][1].id).not.toBeUndefined()
+    expect(mockCalls[0][1]).toBe(testBoard)
   })
 })
