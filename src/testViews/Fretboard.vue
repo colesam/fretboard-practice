@@ -90,8 +90,4 @@ export default {
 .max {
   max-width: 100% !important;
 }
-
-.width-auto {
-  width: auto !important;
-}
 </style>

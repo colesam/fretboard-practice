@@ -1,9 +1,7 @@
-// import Dashboard from '@/views/Dashboard'
-// import MandolinFretboard from '@/test_components/MandolinFretboard'
+import Dashboard from '@/views/Dashboard'
 import Fretboard from '@/testViews/Fretboard'
 
 export default [
-  // { path: '/testing/mandolin-fretboard', name: 'mandolin-fretboard', component: MandolinFretboard },
-  // { path: '/', name: 'dashboard', component: Dashboard }
-  { path: '/', name: 'testing/fretboard', component: Fretboard }
+  { path: '/', name: 'Dashboard', component: Dashboard },
+  { path: '/testing/fretboard', name: 'Fretboard', component: Fretboard }
 ]
