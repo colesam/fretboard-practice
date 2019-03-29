@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-navigation-drawer app clipped :input="true">
+    <v-navigation-drawer v-if="sidebarIncluded" app clipped :input="true">
       <slot name="sidebar"></slot>
     </v-navigation-drawer>
     <v-content>
@@ -17,6 +17,12 @@ import Navbar from '@/components/Navbar'
 export default {
   components: {
     Navbar
+  },
+
+  computed: {
+    sidebarIncluded() {
+      return this.$slots.sidebar !== undefined
+    }
   }
 }
 </script>
