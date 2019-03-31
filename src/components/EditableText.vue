@@ -1,6 +1,11 @@
 <template>
-  <div class="editableText">
-    <div v-if="!editMode" @click="editMode = true" class="editableText__text" :class="textClass">
+  <div class="editableText ">
+    <div
+      v-if="!editMode"
+      @click="enableEditMode"
+      class="editableText__text editable"
+      :class="textClass"
+    >
       {{ this.value }}
     </div>
     <v-text-field
@@ -19,6 +24,8 @@
 </template>
 
 <script>
+import Vue from 'vue'
+
 export default {
   data() {
     return {
@@ -41,6 +48,13 @@ export default {
     handleInput(value) {
       console.log(value)
       this.$emit('input', value)
+    },
+
+    enableEditMode() {
+      this.editMode = true
+      Vue.nextTick().then(() => {
+        this.$el.querySelector('input').select()
+      })
     }
   }
 }

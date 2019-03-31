@@ -12,3 +12,9 @@ body:not(.user-is-tabbing) button:focus {
   outline: none;
   box-shadow: none;
 }
+
+// Editable
+.editable:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
