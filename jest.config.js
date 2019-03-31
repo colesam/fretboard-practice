@@ -5,6 +5,10 @@ module.exports = {
     '.+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$': 'jest-transform-stub',
     '^.+\\.jsx?$': 'babel-jest'
   },
+  transformIgnorePatterns: [
+    '<rootDir>/node_modules/(?!vuetify)',
+    '<rootDir>/node_modules/(?!vuetify/lib)'
+  ],
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
