@@ -6,12 +6,14 @@
           <!--<exercise-card :exercise="state.exercises['1']"></exercise-card>-->
           <v-card>
             <v-card-title>
-              <editable-text text-class="body-2" :value="testText" @input="handleInput" />
+              <editable-text
+                text-class="body-2"
+                :value="state.exercises['2'].name"
+                @input="handleInput"
+              />
             </v-card-title>
             <v-card-text>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa doloremque impedit
-              laboriosam libero reprehenderit similique vero! Ad adipisci aliquam asperiores ea
-              excepturi explicabo iusto magnam, magni nulla quae sequi unde.
+              <editable-text-area :value="state.exercises['2'].description" text-class="body-1" />
             </v-card-text>
           </v-card>
         </v-flex>
@@ -24,12 +26,14 @@
 import BaseLayout from '@/components/BaseLayout'
 // import EditableText from '@/components/EditableText'
 import EditableText from '@/components/EditableText'
+import EditableTextArea from '@/components/EditableTextArea'
 import state from '@/store/testData/testState'
 
 export default {
   components: {
     BaseLayout,
-    EditableText
+    EditableText,
+    EditableTextArea
     // EditableText
   },
 

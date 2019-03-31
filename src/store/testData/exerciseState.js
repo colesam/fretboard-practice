@@ -10,7 +10,7 @@ export default {
     id: 2,
     name: 'Right hand dexterity - The Fox 1',
     description:
-      'Play muted 16th notes with a steady consistent rhythm along with the spotify recording of The Fox. Try to stay as relaxed as possible and minimize interruptions.',
+      'Play muted 16th notes with a steady consistent rhythm along with a recording of The Fox.',
     fretboards: []
   },
 

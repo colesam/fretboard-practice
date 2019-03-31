@@ -16,5 +16,5 @@ body:not(.user-is-tabbing) button:focus {
 // Editable
 .editable:hover {
   cursor: pointer;
-  opacity: 0.8;
+  color: $grey-d1;
 }
